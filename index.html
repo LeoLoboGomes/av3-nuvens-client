@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="./src/style.css">
+  </head>
+  <body>
+    <section class="section">
+      <div class="container">
+        <h1 class="title">
+          Produtos
+        </h1>
+        <p class="subtitle">Trabalho para AV3.</p>
+        <div class="field">
+          <label class="label">ID do produto</label>
+          <div class="control">
+            <input id="product-id" class="input" type="text" placeholder="Informe o id do produto que deseja pesquisar">
+          </div>
+        </div>
+        <div class="buttons">
+          <button id="get-id" class="button is-primary is-light" onclick="getProductById()">Produto por ID</button>
+          <button id="get-all" class="button is-primary" onclick="getAllProducts()">Todos os Produtos</button>
+        </div>
+        <div id="main">
+        </div>
+      </div>
+    </section>
+
+    <script type="text/javascript" src="./src/script.js"></script>
+  </body>
+</html>
