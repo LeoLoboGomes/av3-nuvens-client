@@ -1,28 +1,19 @@
+const backUrl = "http://localhost:3000"
+
 //Get all products
 
+const fetchAllProducts = async () => {
+  const response = await fetch(backUrl + "/produtos/");
+  const data = await response.json();
+  return data;
+}
 
-//Get especific product by ID
+//Get specific product by ID
 
-const fetchProductById = (id) => {
-  console.log(id)
-  fetch('./api/some.json')
-    .then(
-    function(response) {
-        if (response.status !== 200) {
-        console.log('Looks like there was a problem. Status Code: ' +
-            response.status);
-        return;
-        }
-
-        // Examine the text in the response
-        response.json().then(function(data) {
-        console.log(data);
-        });
-    }
-    )
-    .catch(function(err) {
-    console.log('Fetch Error :-S', err);
-    });
+const fetchProductById = async (id) => {
+  const response = await fetch(backUrl + "/produtos/" + id);
+  const data = await response.json();
+  return data[0];
 }
 
 
@@ -36,27 +27,30 @@ console.log('Hello world')
 
 const mockProducts = ["Product one", "Product two", "Product three"]
 
-const getProductById = () => {
-  const productId = document.getElementById("product-id").value
-  const listParent = document.getElementById("main")
+const getProductById = async () => {
+  const productId = document.getElementById("product-id").value;
+  const listParent = document.getElementById("main");
 
   if (productId) {
-    fetchProductById(productId)
-    listParent.innerHTML = ''
-    var addHtml = document.createElement('div')
-    addHtml.innerHTML = mockProducts[productId]
-    listParent.appendChild(addHtml)
+    const product = await fetchProductById(productId);
+
+    listParent.innerHTML = '';
+    var addHtml = document.createElement('div');
+    addHtml.innerHTML = product.name;
+    listParent.appendChild(addHtml);
   } else {
-    alert("ID do produto não foi informado")
+    alert("ID do produto não foi informado");
   }
 }
 
-const getAllProducts = () => {
-  console.log('Hello world')
-  const listParent = document.getElementById("main")
+const getAllProducts = async () => {
+  console.log('Hello world');
+  const listParent = document.getElementById("main");
 
-  listParent.innerHTML = ''
-  var addHtml = document.createElement('div')
-  addHtml.innerHTML = mockProducts
-  listParent.appendChild(addHtml)
+  const productsList = await fetchAllProducts();
+
+  listParent.innerHTML = '';
+  var addHtml = document.createElement('div');
+  addHtml.innerHTML = productsList[1].name;
+  listParent.appendChild(addHtml);
 }
