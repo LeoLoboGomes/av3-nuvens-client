@@ -24,7 +24,7 @@ const createNewProduct = async (product) => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(product)
   };
-  const response = await fetch(backUrl + "/produtos/", requestOptions)
+  const response = await fetch(backUrl + "/produtos/", requestOptions);
   const data = await response.json();
   console.log(data);
 };
@@ -37,7 +37,7 @@ const editProductRequest = async (product) => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(product)
   };
-  const response = await fetch(backUrl + "/produtos/", requestOptions)
+  const response = await fetch(backUrl + "/produtos/", requestOptions);
   const data = await response.json();
   console.log(data);
 }
