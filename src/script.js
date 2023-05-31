@@ -1,4 +1,4 @@
-const backUrl = "http://localhost:3000"
+const backUrl = "http://35.174.104.13:3000"
 
 //Get all products
 
